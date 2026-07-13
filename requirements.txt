@@ -1,7 +1,11 @@
-pandas
-scikit-learn
-joblib
-mlflow
 fastapi
 uvicorn
+mlflow
+boto3
+python-dotenv
+pandas
+numpy
+scikit-learn
+joblib
 pydantic
+skops
