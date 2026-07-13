@@ -42,5 +42,9 @@ jobs:
           application_name: ${{ secrets.EB_APPLICATION_NAME }}
           environment_name: ${{ secrets.EB_ENVIRONMENT_NAME }}
           region: ${{ secrets.AWS_REGION }}
-          version_label: ${{ github.sha }}
+
+          version_label: customer-churn-${{ github.run_number }}
+
           deployment_package: deploy.zip
+
+          use_existing_version_if_available: true
