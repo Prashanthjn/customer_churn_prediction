@@ -63,7 +63,7 @@ View experiment runs with:
 
 ```bash
 cd customer_churn_prediction
-mlflow ui --backend-store-uri sqlite:////home/prashanth-j-n/Desktop/Customer\ churn/customer_churn_prediction/mlruns/mlflow.db
+mlflow ui 
 ```
 
 If you start the UI from a different folder, pass the same backend-store-uri so it reads the same tracking database.
