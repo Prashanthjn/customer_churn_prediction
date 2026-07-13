@@ -1,11 +1,11 @@
-fastapi
-uvicorn
-mlflow
-boto3
-python-dotenv
 pandas
 numpy
 scikit-learn
 joblib
+mlflow
+fastapi
+uvicorn
 pydantic
+boto3
+python-dotenv
 skops

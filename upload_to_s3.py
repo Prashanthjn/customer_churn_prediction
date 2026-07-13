@@ -17,7 +17,6 @@ s3 = boto3.client(
 
 LOCAL_FOLDER = "registered_model"
 
-# Check folder exists
 if not os.path.exists(LOCAL_FOLDER):
     print(f"Error: '{LOCAL_FOLDER}' folder not found!")
     exit()
@@ -28,8 +27,8 @@ for root, dirs, files in os.walk(LOCAL_FOLDER):
     for file in files:
         local_path = os.path.join(root, file)
 
-        # Preserve folder structure
-        s3_key = os.path.relpath(local_path, ".")
+        # Convert Windows '\' to '/'
+        s3_key = os.path.relpath(local_path, ".").replace("\\", "/")
 
         try:
             s3.upload_file(
@@ -37,10 +36,11 @@ for root, dirs, files in os.walk(LOCAL_FOLDER):
                 BUCKET_NAME,
                 s3_key
             )
+
             print(f"Uploaded: {s3_key}")
 
         except Exception as e:
-            print(f"Failed to upload {file}")
+            print(f"Failed: {file}")
             print(e)
 
 print("\nUpload completed.")

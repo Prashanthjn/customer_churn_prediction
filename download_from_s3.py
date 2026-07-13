@@ -24,6 +24,8 @@ response = s3.list_objects_v2(
     Prefix=S3_PREFIX
 )
 
+print(response)
+
 if "Contents" in response:
     for obj in response["Contents"]:
         key = obj["Key"]

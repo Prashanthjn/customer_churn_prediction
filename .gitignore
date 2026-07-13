@@ -16,7 +16,21 @@ __pycache__/
 mlruns/
 models/
 data/
-
+notebooks/
 # Environment and logs
 .env
 *.log
+
+
+venv/
+__pycache__/
+mlruns/
+notebooks/
+.git/
+.gitignore
+models/
+data/
+*.pyc
+*.pyo
+*.pyd
+.env

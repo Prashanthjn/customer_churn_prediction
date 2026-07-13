@@ -13,6 +13,8 @@ model = load_model()
 app = FastAPI(title="Customer Churn Prediction API")
 
 
+
+
 class Customer(BaseModel):
     Age: int
     Gender: int

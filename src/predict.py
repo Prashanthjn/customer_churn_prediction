@@ -1,9 +1,5 @@
-
-
-import joblib
+import mlflow.pyfunc
 import pandas as pd
-
-MODEL_PATH = "models/model.joblib"
 
 FEATURE_ORDER = [
     "Age",
@@ -21,28 +17,33 @@ FEATURE_ORDER = [
 ]
 
 
-def load_model(path=MODEL_PATH):
-    return joblib.load(path)
+def load_model():
+    return mlflow.pyfunc.load_model("registered_model")
 
 
-def prepare_features(customer: dict) -> pd.DataFrame:
+def prepare_features(customer):
     row = dict(customer)
+
     row["Spend_per_Tenure"] = row["Total Spend"] / (row["Tenure"] + 1)
     row["Calls_per_Usage"] = row["Support Calls"] / (row["Usage Frequency"] + 1)
 
     df = pd.DataFrame([row])
+
     return df[FEATURE_ORDER]
 
 
-def predict_single(customer: dict, model=None):
+def predict_single(customer, model=None):
+
     if model is None:
         model = load_model()
 
     X = prepare_features(customer)
-    prediction = model.predict(X)[0]
-    probability = model.predict_proba(X)[0][1]
 
-    return {"churn": bool(prediction), "churn_probability": float(probability)}
+    prediction = model.predict(X)
+
+    return {
+        "prediction": int(prediction[0])
+    }
 
 
 if __name__ == "__main__":
@@ -59,5 +60,4 @@ if __name__ == "__main__":
         "Last Interaction": 5,
     }
 
-    result = predict_single(sample_customer)
-    print(result)
+    print(predict_single(sample_customer))
