@@ -71,6 +71,6 @@ If you start the UI from a different folder, pass the same backend-store-uri so 
 ## Docker
 
 ```bash
-docker build -t churn-api .
-docker run -p 8000:8000 churn-api
+docker build -t customer-churn-api .
+docker run -p 8000:8000 customer-churn-api
 ```
