@@ -341,12 +341,5 @@ Every push to the `main` branch automatically triggers the deployment workflow t
 
 ---
 
-# Future Improvements
 
-- Model Registry Integration
-- Unit Testing
-- Monitoring & Logging
-- Model Drift Detection
-- Automatic Retraining
-- Kubernetes Deployment
-- CI/CD Quality Gates
+give it a star if you like this stuff 
