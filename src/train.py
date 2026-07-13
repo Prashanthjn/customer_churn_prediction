@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import joblib
 import mlflow
 import mlflow.sklearn
@@ -10,7 +12,15 @@ from feature_engineering import load_processed, add_features, get_feature_target
 
 MODEL_PATH = "models/model.joblib"
 
-mlflow.set_tracking_uri("sqlite:///mlruns/mlflow.db")
+
+def get_tracking_uri():
+    project_root = Path(__file__).resolve().parent.parent
+    tracking_dir = project_root / "mlruns"
+    tracking_dir.mkdir(exist_ok=True)
+    return f"sqlite:///{tracking_dir / 'mlflow.db'}"
+
+
+mlflow.set_tracking_uri(get_tracking_uri())
 mlflow.set_experiment("customer_churn")
 
 

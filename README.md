@@ -62,8 +62,11 @@ Then hit `POST /predict` with a JSON body like:
 View experiment runs with:
 
 ```bash
-mlflow ui
+cd customer_churn_prediction
+mlflow ui --backend-store-uri sqlite:////home/prashanth-j-n/Desktop/Customer\ churn/customer_churn_prediction/mlruns/mlflow.db
 ```
+
+If you start the UI from a different folder, pass the same backend-store-uri so it reads the same tracking database.
 
 ## Docker
 

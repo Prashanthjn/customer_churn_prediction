@@ -1,7 +1,14 @@
+
+from pathlib import Path
 import pandas as pd
 
-RAW_PATH = "data/customer_churn_dataset.csv"
-PROCESSED_PATH = "data/processed_customer_data.csv"
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+
+RAW_PATH = DATA_DIR / "customer_churn_dataset.csv"
+PROCESSED_PATH = DATA_DIR / "processed_customer_data.csv"
+
+df = pd.read_csv(RAW_PATH)
 
 
 def load_data(path=RAW_PATH):
